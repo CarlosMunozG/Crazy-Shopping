@@ -15,6 +15,7 @@ function Game(canvas) {
 Game.prototype.startGame = function() {
   this.player = new Player(this.canvas);
 
+  this.endGame();
   var loop = () => {
     if (Math.random() > 0.985) {
       var randomX = Math.random() * this.canvas.width - 10;
@@ -27,8 +28,9 @@ Game.prototype.startGame = function() {
       this.bonus1.push(newBonus1);
  
     }
-    console.log(this.score);
+    //console.log(this.score);
     //this.countdownTime();
+    
     this.checkLimits();
     this.update();
     this.clear();
@@ -136,9 +138,10 @@ Game.prototype.endGame = function() {
   var timeleft = 10;
   var downloadTimer = setInterval(function(){
     //document.getElementById("progressBar").value = 10 - timeleft;
+    console.log(timeleft);
     timeleft -= 1;
     if(timeleft <= 0)
       clearInterval(downloadTimer);
   }, 1000);
-  console.log(timeleft);
+  
 }
