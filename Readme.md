@@ -144,5 +144,5 @@ Git:
     https://github.com/CarlosMunozG/Crazy-Shopping.git
 
 Slides:
-
+    https://trello.com/b/b5snnLhV
     
