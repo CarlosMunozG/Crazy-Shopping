@@ -28,91 +28,93 @@ Backlog:
 
 Data Structure (constructor functions):
 1. Main.js
-    create SplashScreen 1( )
-    create SplashScreen 2( )
-    create SplashScreen 3( )
-    create SplashScreen 4( )
-    create SplashScreen 5( )
-    create GameScreen( )
-    create GameOverScreen 1( )
-    create GameOverScreen 2( )
-    create WinScreen( )
-    create RestartScreen( )
-    buildDom( )
+    1. create SplashScreen 1( )
+    2. create SplashScreen 2( )
+    3. create SplashScreen 3( )
+    4. create SplashScreen 4( )
+    5. create SplashScreen 5( )
+    6. create GameScreen( )
+    7. create GameOverScreen 1( )
+    8. create GameOverScreen 2( )
+    9. create WinScreen( )
+    10. create RestartScreen( )
+    11. buildDom( )
     
 2. Player.js
-    this.canvas
-    this.ctx
-    this.x
-    this.y
-    this.width
-    this.height
-    this.speed
-    this.velocity
-    this.score
-    this.drawPicture
+    1. this.canvas
+    2. this.ctx
+    3. this.x
+    4. this.y
+    5. this.width
+    6. this.height
+    7. this.speed
+    8. this.velocity
+    9. this.score
+    10. this.drawPicture
 
 3. Enemy 1, 2, 3, 4 and 5
-    this.canvas
-    this.ctx
-    this.x
-    this.y
-    this.width
-    this.height
-    this.speed
-    this.velocity
-    this.drawPicture
-    this.strength
+    1. this.canvas
+    2. this.ctx
+    3. this.x
+    4. this.y
+    5. this.width
+    6. this.height
+    7. this.speed
+    8. this.velocity
+    9. this.drawPicture
+    10. this.strength
 
 4. Bonus 1 and 2
-    this.canvas
-    this.ctx
-    this.x
-    this.y
-    this.width
-    this.height
-    this.speed
-    this.velocity
-    this.drawPicture
-    this.strength
+    1. this.canvas
+    2. this.ctx
+    3. this.x
+    4. this.y
+    5. this.width
+    6. this.height
+    7. this.speed
+    8. this.velocity
+    9. this.drawPicture
+    10. this.strength
 
 Data Structure (methods):
 1. Game
-    this.player
-    this.enemy1
-    this.enemy2
-    this.enemy3
-    this.enemy4
-    this.enemy5
-    this.bonus1
-    this.bonus2
-    this.checkCollisions( )
-     this.checkScore( )
-    this.gameOver( )
-    this.win( )
-    this.countTime( )
-    this.clear( )
-    this.update( )
-    this.startGame( )
+    1. this.player
+    2. this.enemy1
+    3. this.enemy2
+    4. this.enemy3
+    5. this.enemy4
+    6. this.enemy5
+    7. this.bonus1
+    8. this.bonus2
+    9. this.checkCollisions( )
+    10. this.checkScore( )
+    11. this.gameOver( )
+    12. this.win( )
+    13. this.countTime( )
+    14. this.clear( )
+    15. this.update( )
+    16. this.startGame( )
    
 2. Player
-    this.move( )
-    this.draw( )
-    this.checkBorders( )
-    this.updateScore( )
+    1. this.move( )
+    2. this.draw( )
+    3. this.checkBorders( )
+    4. this.updateScore( )
 
 3. Enemy
-    this.move( )
-    this.draw( )
-    this.eliminateEnemy( )
-    this.effect( )
+    1. this.move( )
+    2. this.draw( )
+    3. this.eliminateEnemy( )
+    4. this.effect( )
     
 4. Bonus
-    this.move( )
-    this.draw( )
-    this.eliminateBonus( )
+    1. this.move( )
+    2. this.draw( )
+    3. this.eliminateBonus( )
     
+
 States and States Transitions:
+
     1. splashScreen 1
     2. splashScreen 2
     3. splashScreen 3
@@ -125,6 +127,7 @@ States and States Transitions:
     10. winScreen 2
     
 Tasks:
+
     1. Create archives
     2. Copy BoilerPlate
     3. Git & Github
