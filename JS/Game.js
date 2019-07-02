@@ -15,11 +15,11 @@ Game.prototype.startGame = function() {
 
   var loop = () => {
     
-    /*if(Math.random()> 0.97){
-      var randomY = Math.random() * this.canvas.height - 10;
-      var newEnemy = new Enemy(this.canvas, randomY);
+    if(Math.random()> 0.985){
+      var randomX = Math.random() * this.canvas.width - 10;
+      var newEnemy = new Enemy1(this.canvas, randomX);
       this.enemies.push(newEnemy);
-    }*/
+    }
 
     this.checkLimits();
     this.update();
@@ -29,7 +29,6 @@ Game.prototype.startGame = function() {
     //comprobar colisiones
     //this.checkCollisions();
 
-    //parar el juego si no hay mas vidas
     if(!this.isGameOver) {
       requestAnimationFrame(loop);
     } else {
@@ -47,9 +46,9 @@ Game.prototype.checkLimits = function() {
 
 Game.prototype.update = function() {
   this.player.move();
-  /*this.enemies.forEach( function(enemy){
+  this.enemies.forEach( function(enemy){
     enemy.move();
-  });*/
+  });
 }
 
 Game.prototype.clear = function() {
@@ -58,9 +57,9 @@ Game.prototype.clear = function() {
 
 Game.prototype.draw = function() {
   this.player.draw();
-  /*this.enemies.forEach( function(enemy){
+  this.enemies.forEach( function(enemy){
     enemy.draw();
-  });*/
+  });
 
   /*Game.prototype.checkCollisions = function() {
     this.enemies.forEach( (enemy, index) => {

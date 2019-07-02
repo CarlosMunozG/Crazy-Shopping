@@ -80,10 +80,8 @@ function main() {
     game.startGame();
     document.addEventListener('keydown', function(event){
       if(event.key === 'ArrowLeft'){
-        //game.player.checkBorders(-1);
         game.player.setDirection(-1);
       } else if(event.key === 'ArrowRight'){
-        //game.player.checkBorders(1);
         game.player.setDirection(1);
       }
     })
