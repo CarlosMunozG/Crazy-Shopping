@@ -11,17 +11,8 @@ function Player(canvas) {
   this.velocity = 3;
   this.direction = 0;
   this.color = 'blue';
+  //this.score = 0;
 }
-
-/*Player.prototype.checkBorders = function(newDirection){
-  if(this.x > 0 && this.x + this.width < this.canvas.width){
-    console.log('in if');
-    this.setDirection(newDirection);
-  } else {
-    console.log('fuera if');
-    this.setDirection(0);
-  }
-}*/
 
 Player.prototype.checkBorders = function(){
   if(this.x < 0 ){

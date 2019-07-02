@@ -90,7 +90,7 @@ Data Structure (methods):
     10. this.checkScore( )
     11. this.gameOver( )
     12. this.win( )
-    13. this.countTime( )
+    13. this.countdownTime( )
     14. this.clear( )
     15. this.update( )
     16. this.startGame( )

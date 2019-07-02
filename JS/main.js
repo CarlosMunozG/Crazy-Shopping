@@ -76,7 +76,8 @@ function main() {
     `);
     var canvas = document.querySelector('canvas');
     var game = new Game(canvas);
-    //game.gameOverCallback(createGameOverScreen);
+    game.gameOverCallback(createGameOverScreen1);
+    game.gameWinCallback(createWinScreen1);
     game.startGame();
     document.addEventListener('keydown', function(event){
       if(event.key === 'ArrowLeft'){
@@ -85,12 +86,9 @@ function main() {
         game.player.setDirection(1);
       }
     })
-
     document.addEventListener('keyup', function(){
       game.player.setDirection(0);
     })
-    //setTimeout(createGameOverScreen1, 3000);
-    //setTimeout(createWinScreen1, 3000);
   };
 
 
