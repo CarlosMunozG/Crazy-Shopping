@@ -1,12 +1,15 @@
 'use strict'
 
+
 function main() {
   var mainElement = document.querySelector('#site-main');
+
 
   function buildDom(html) {
     mainElement.innerHTML = html;
     return mainElement;
   };
+
 
   function createSplashScreen1 () {
     var splashScreen = buildDom(`
@@ -22,6 +25,7 @@ function main() {
     skipButton.addEventListener('click', createGameScreen);
   };
 
+
   function createSplashScreen2 () {
     var splashScreen = buildDom(`
       <section>
@@ -35,6 +39,7 @@ function main() {
     var skipButton = splashScreen.querySelector('.skip');
     skipButton.addEventListener('click', createGameScreen);
   };
+
 
   function createSplashScreen3 () {
     var splashScreen = buildDom(`
@@ -50,6 +55,7 @@ function main() {
     skipButton.addEventListener('click', createGameScreen);
   };
 
+
   function createSplashScreen4 () {
     var splashScreen = buildDom(`
       <section>
@@ -59,36 +65,36 @@ function main() {
     `);
     var startButton = splashScreen.querySelector('button');
     startButton.addEventListener('click', createGameScreen);
-
   };
+
 
   function createGameScreen() {
     var gameScreen = buildDom(`
       <section>
-        <canvas width="450" height="700"></canvas>
+        <canvas width="400" height="500"></canvas>
       </section>
     `);
-    //tenemos que llamar a la funcion Game para inicializar el juego
     var canvas = document.querySelector('canvas');
     var game = new Game(canvas);
     //game.gameOverCallback(createGameOverScreen);
     game.startGame();
-    /*document.addEventListener('keydown', function(event){
-      //también puede ser if(event.key === 'ArrowDown')
-      if(event.keyCode === 40){
-        game.player.setDirection(1);
-      } else if(event.keyCode === 38){
+    document.addEventListener('keydown', function(event){
+      if(event.key === 'ArrowLeft'){
+        //game.player.checkBorders(-1);
         game.player.setDirection(-1);
+      } else if(event.key === 'ArrowRight'){
+        //game.player.checkBorders(1);
+        game.player.setDirection(1);
       }
-    })*/
+    })
 
-    /*document.addEventListener('keyup', function(){
+    document.addEventListener('keyup', function(){
       game.player.setDirection(0);
-    })*/
-
+    })
     //setTimeout(createGameOverScreen1, 3000);
-    setTimeout(createWinScreen1, 3000);
+    //setTimeout(createWinScreen1, 3000);
   };
+
 
   function createGameOverScreen1() {
     var gameOverScreen = buildDom(`
@@ -97,10 +103,10 @@ function main() {
         <button>restart</button>
       </section>
     `);
-
     var reStartButton = gameOverScreen.querySelector('button');
     reStartButton.addEventListener('click', createGameOverScreen2);
   };  
+
 
   function createGameOverScreen2() {
     var gameOverScreen = buildDom(`
@@ -113,6 +119,7 @@ function main() {
     reStartButton.addEventListener('click', createGameScreen);
   };  
 
+
   function createWinScreen1() {
     var winScreen = buildDom(`
       <section>
@@ -124,6 +131,7 @@ function main() {
     reStartButton.addEventListener('click', createWinScreen2);
   };  
 
+
   function createWinScreen2() {
     var winScreen = buildDom(`
       <section>
@@ -131,7 +139,6 @@ function main() {
         <button>restart</button>
       </section>
     `);
-
     var reStartButton = winScreen.querySelector('button');
     reStartButton.addEventListener('click', createGameScreen);
   };  

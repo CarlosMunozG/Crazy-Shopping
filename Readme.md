@@ -98,8 +98,9 @@ Data Structure (methods):
 2. Player
     1. this.move( )
     2. this.draw( )
-    3. this.checkBorders( )
-    4. this.updateScore( )
+    3. this.setDirection( )
+    4. this.checkBorders( )
+    5. this.updateScore( )
 
 3. Enemy
     1. this.move( )
