@@ -73,6 +73,8 @@ function main() {
       <section>
         <canvas width="400" height="500"></canvas>
       </section>
+      <section id="score-text"></section>
+      <section id="time"></section>
     `);
     var canvas = document.querySelector('canvas');
     var game = new Game(canvas);

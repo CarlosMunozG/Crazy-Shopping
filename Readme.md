@@ -78,22 +78,40 @@ Data Structure (constructor functions):
 
 Data Structure (methods):
 1. Game
-    1. this.player
-    2. this.enemy1
-    3. this.enemy2
-    4. this.enemy3
-    5. this.enemy4
-    6. this.enemy5
-    7. this.bonus1
-    8. this.bonus2
-    9. this.checkCollisions( )
-    10. this.checkScore( )
-    11. this.gameOver( )
-    12. this.win( )
-    13. this.countdownTime( )
-    14. this.clear( )
-    15. this.update( )
-    16. this.startGame( )
+    1. this.canvas
+    2. this.ctx
+    3. this.player
+    4. this.enemy1
+    5. this.enemy2
+    6. this.enemy3
+    7. this.enemy4
+    8. this.enemy5
+    9. this.bonus1
+    10. this.bonus2
+    11. this.score
+    12. this.time
+    13. this.isGameOver
+    14. this.isWin
+    
+    15. this.startGame( )
+    16. this.checkLimits( )
+    17. this.printData( )
+    17. this.update( )
+    18. this.clear( )
+    19. this.draw( )
+    20. this.checkcollisions( )
+    21. this.gameOverCallback( )
+    22. this.gameWinCallback( )
+    23. this.endTime( )
+    
+    15. this.checkCollisions( )
+    16. this.checkScore( )
+    17. this.gameOver( )
+    18. this.win( )
+    19. this.countdownTime( )
+    20. this.clear( )
+    21. this.update( )
+    22. this.startGame( )
    
 2. Player
     1. this.move( )

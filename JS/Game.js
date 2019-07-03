@@ -10,11 +10,14 @@ function Game(canvas) {
   this.canvas = canvas;
   this.ctx = this.canvas.getContext("2d");
   this.onGameOver = null;
+  this.time = 30;
 }
 
 Game.prototype.startGame = function() {
   this.player = new Player(this.canvas);
-  this.endGame();
+  this.endTime();
+  //this.printData();
+  
   
   var loop = () => {
     if (Math.random() > 0.985) {
@@ -28,14 +31,12 @@ Game.prototype.startGame = function() {
       this.bonus1.push(newBonus1);
  
     }
-    
-    //console.log(this.score);
-    
     this.checkLimits();
     this.update();
     this.clear();
     this.draw();
     this.checkCollisions();
+    
 
     if(this.isGameOver){
       this.onGameOver();
@@ -48,22 +49,23 @@ Game.prototype.startGame = function() {
   loop();
 };
 
-/*Game.prototype.countdownTime = function(){
-  var timeleft = 3;
-  var downloadTimer = setInterval(function(){
-    //document.getElementById("progressBar").value = 10 - timeleft;
-    timeleft -= 1;
-    if(timeleft <= 0)
-      clearInterval(downloadTimer);
-  }, 1000);
-  console.log(timeleft);
-}*/
-
 Game.prototype.checkLimits = function() {
   this.player.checkBorders();
 };
 
+Game.prototype.printData = function() {
+  var scoreText = document.querySelector('#score-text');
+  var timeText = document.querySelector('#time');
+  scoreText.innerHTML = 'Score: ' + this.score;
+  timeText.innerHTML = 'Time: ' + this.time;
+}
+
+Game.prototype.updateData = function() {
+
+}
+
 Game.prototype.update = function() {
+  this.printData();
   this.player.move();
   this.enemies1.forEach(function(enemy) {
     enemy.move();
@@ -71,11 +73,13 @@ Game.prototype.update = function() {
   this.bonus1.forEach(function(bonus) {
     bonus.move();
   });
+  
 
 };
 
 Game.prototype.clear = function() {
   this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  this.printData();
 };
 
 Game.prototype.draw = function() {
@@ -116,6 +120,7 @@ Game.prototype.draw = function() {
       if (rightLeft && leftRight && bottomTop && topBottom) {
         this.bonus1.splice(index, 1);
         this.score += bonus.strength;
+        this.printData();
 
         //this.player.score --;
         if(this.score === 100){
@@ -134,18 +139,19 @@ Game.prototype.gameWinCallback = function(callback){
   this.onGameWin = callback;
 }
 
-Game.prototype.endGame = function() {
-  var timeleft = 30;
+Game.prototype.endTime = function() {
+  
+  this.time = 30;
   var countdownTimer = setInterval(() => {
     //document.getElementById("progressBar").value = 10 - timeleft;
-    console.log(timeleft);
+    console.log(this.time);
     
     if(this.isWin === true){
-      timeleft = timeleft;
+      this.time = this.time;
       clearInterval(countdownTimer);
     } else {
-      timeleft -= 1;
-      if(timeleft < 0){
+      this.time -= 1;
+      if(this.time < 0){
         clearInterval(countdownTimer);
         this.isGameOver = true;
       }
