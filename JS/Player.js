@@ -10,8 +10,8 @@ function Player(canvas) {
   this.lives = 1;
   this.velocity = 3;
   this.direction = 0;
-  this.color = 'blue';
-  this.img = null;
+  this.img = new Image();
+  this.img.src = 'images/player/basket.png';
 }
 
 Player.prototype.checkBorders = function(){
@@ -27,10 +27,11 @@ Player.prototype.move = function() {
 }
 
 Player.prototype.draw = function() {
-  this.img = new Image();
-  this.img.src = 'images/player/basket.png';
   this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-  
+}
+
+Player.prototype.setImg = function(newImg) {
+  this.img.src = newImg;
 }
 
 Player.prototype.setDirection = function(newDirection){

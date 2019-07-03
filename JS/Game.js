@@ -26,14 +26,14 @@ Game.prototype.startGame = function() {
       var newEnemy1 = new Enemy1(this.canvas, randomX);
       this.enemies1.push(newEnemy1);
     }
-    if (Math.random() > 0.97) {
+    if (Math.random() > 0.992) {
       var imgBonus1Names = ['images/bonus2/fruit.png', 'images/bonus2/meat.png', 'images/bonus2/prawn.png', 'images/bonus2/tomato.png'];
       var randomBonus1Img = Math.floor(Math.random() * (imgBonus1Names.length) );
       var randomX = Math.random() * this.canvas.width - 10;
       var newBonus1 = new Bonus1(this.canvas, randomX, imgBonus1Names, randomBonus1Img);
       this.bonus1.push(newBonus1);
     }
-    if (Math.random() > 0.97) {
+    if (Math.random() > 0.997) {
       var imgBonus2Names = ['images/bonus1/cheese.png', 'images/bonus1/pizza.png', 'images/bonus1/donut.png', 'images/bonus1/pie.png'];
       var randomX = Math.random() * this.canvas.width - 10;
       var randomBonus2Img = Math.floor(Math.random() * (imgBonus2Names.length) );
@@ -131,7 +131,7 @@ Game.prototype.draw = function() {
         this.bonus1.splice(index, 1);
         this.score += bonus.strength;
         this.printData();
-        if(this.score === 100){
+        if(this.score >= 100){
           this.isWin = true;
         }
       }
@@ -146,7 +146,7 @@ Game.prototype.draw = function() {
         this.bonus2.splice(index, 1);
         this.score += bonus.strength;
         this.printData();
-        if(this.score === 100){
+        if(this.score >= 100){
           this.isWin = true;
         }
       }

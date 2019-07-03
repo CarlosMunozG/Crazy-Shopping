@@ -81,19 +81,19 @@ function main() {
     game.gameOverCallback(createGameOverScreen1);
     game.gameWinCallback(createWinScreen1);
     game.startGame();
-    //console.log(game.player.draw('images/player/basket.png') );
     document.addEventListener('keydown', function(event){
       if(event.key === 'ArrowLeft'){
         game.player.setDirection(-1);
-        //game.player.draw('images/player/basket-left.png');
+        game.player.setImg('images/player/basket-left.png');
         console.log(game.player.img.src);
       } else if(event.key === 'ArrowRight'){
         game.player.setDirection(1);
-        //game.player.draw('images/player/basket-right.png');
+        game.player.setImg('images/player/basket-right.png');
       }
     })
     document.addEventListener('keyup', function(){
       game.player.setDirection(0);
+      game.player.setImg('images/player/basket.png');
     })
   };
 
