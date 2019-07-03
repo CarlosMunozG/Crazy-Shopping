@@ -14,8 +14,8 @@ function Game(canvas) {
 
 Game.prototype.startGame = function() {
   this.player = new Player(this.canvas);
-
   this.endGame();
+  
   var loop = () => {
     if (Math.random() > 0.985) {
       var randomX = Math.random() * this.canvas.width - 10;
@@ -28,8 +28,8 @@ Game.prototype.startGame = function() {
       this.bonus1.push(newBonus1);
  
     }
+    
     //console.log(this.score);
-    //this.countdownTime();
     
     this.checkLimits();
     this.update();
@@ -48,8 +48,8 @@ Game.prototype.startGame = function() {
   loop();
 };
 
-Game.prototype.countdownTime = function(){
-  var timeleft = 10;
+/*Game.prototype.countdownTime = function(){
+  var timeleft = 3;
   var downloadTimer = setInterval(function(){
     //document.getElementById("progressBar").value = 10 - timeleft;
     timeleft -= 1;
@@ -57,7 +57,7 @@ Game.prototype.countdownTime = function(){
       clearInterval(downloadTimer);
   }, 1000);
   console.log(timeleft);
-}
+}*/
 
 Game.prototype.checkLimits = function() {
   this.player.checkBorders();
@@ -135,13 +135,20 @@ Game.prototype.gameWinCallback = function(callback){
 }
 
 Game.prototype.endGame = function() {
-  var timeleft = 10;
-  var downloadTimer = setInterval(function(){
+  var timeleft = 30;
+  var countdownTimer = setInterval(() => {
     //document.getElementById("progressBar").value = 10 - timeleft;
     console.log(timeleft);
-    timeleft -= 1;
-    if(timeleft <= 0)
-      clearInterval(downloadTimer);
+    
+    if(this.isWin === true){
+      timeleft = timeleft;
+      clearInterval(countdownTimer);
+    } else {
+      timeleft -= 1;
+      if(timeleft < 0){
+        clearInterval(countdownTimer);
+        this.isGameOver = true;
+      }
+    }
   }, 1000);
-  
 }
