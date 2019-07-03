@@ -4,6 +4,7 @@ function Game(canvas) {
   this.player = null;
   this.enemies1 = [];
   this.bonus1 = [];
+  this.bonus2 = [];
   this.score = 0;
   this.isGameOver = false;
   this.isWin = false;
@@ -16,7 +17,6 @@ function Game(canvas) {
 Game.prototype.startGame = function() {
   this.player = new Player(this.canvas);
   this.endTime();
-  //this.printData();
   
   
   var loop = () => {
@@ -29,7 +29,11 @@ Game.prototype.startGame = function() {
       var randomX = Math.random() * this.canvas.width - 10;
       var newBonus1 = new Bonus1(this.canvas, randomX);
       this.bonus1.push(newBonus1);
- 
+    }
+    if (Math.random() > 0.97) {
+      var randomX = Math.random() * this.canvas.width - 10;
+      var newBonus2 = new Bonus2(this.canvas, randomX);
+      this.bonus2.push(newBonus2);
     }
     this.checkLimits();
     this.update();
@@ -60,10 +64,6 @@ Game.prototype.printData = function() {
   timeText.innerHTML = 'Time: ' + this.time;
 }
 
-Game.prototype.updateData = function() {
-
-}
-
 Game.prototype.update = function() {
   this.printData();
   this.player.move();
@@ -73,13 +73,14 @@ Game.prototype.update = function() {
   this.bonus1.forEach(function(bonus) {
     bonus.move();
   });
-  
+  this.bonus2.forEach(function(bonus) {
+    bonus.move();
+  });
 
 };
 
 Game.prototype.clear = function() {
   this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-  this.printData();
 };
 
 Game.prototype.draw = function() {
@@ -90,6 +91,10 @@ Game.prototype.draw = function() {
   this.bonus1.forEach(function(bonus) {
     bonus.draw();
   });
+  this.bonus2.forEach(function(bonus) {
+    bonus.draw();
+  });
+
 
   Game.prototype.checkCollisions = function() {
     this.enemies1.forEach((enemy, index) => {
@@ -121,8 +126,21 @@ Game.prototype.draw = function() {
         this.bonus1.splice(index, 1);
         this.score += bonus.strength;
         this.printData();
+        if(this.score === 100){
+          this.isWin = true;
+        }
+      }
+    });
+    this.bonus2.forEach((bonus, index) => {
+      var rightLeft = this.player.x + this.player.width >= bonus.x;
+      var leftRight = this.player.x <= bonus.x + bonus.width;
+      var bottomTop = this.player.y + this.player.height >= bonus.y;
+      var topBottom = this.player.y <= bonus.y + bonus.height;
 
-        //this.player.score --;
+      if (rightLeft && leftRight && bottomTop && topBottom) {
+        this.bonus2.splice(index, 1);
+        this.score += bonus.strength;
+        this.printData();
         if(this.score === 100){
           this.isWin = true;
         }
