@@ -83,16 +83,22 @@ function main() {
     game.startGame();
     document.addEventListener('keydown', function(event){
       if(event.key === 'ArrowLeft'){
-        game.player.setDirection(-1);
+        game.player.setDirectionX(-1);
         game.player.setImg('images/player/basket-left.png');
         console.log(game.player.img.src);
       } else if(event.key === 'ArrowRight'){
-        game.player.setDirection(1);
+        game.player.setDirectionX(1);
         game.player.setImg('images/player/basket-right.png');
+      } else if(event.key === 'ArrowUp'){
+        game.player.setDirectionY(-1);
+      } else if(event.key === 'ArrowDown'){
+        game.player.setDirectionY(1);
       }
+      event.preventDefault();
     })
     document.addEventListener('keyup', function(){
-      game.player.setDirection(0);
+      game.player.setDirectionX(0);
+      game.player.setDirectionY(0);
       game.player.setImg('images/player/basket.png');
     })
   };
