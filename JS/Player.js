@@ -3,15 +3,15 @@
 function Player(canvas) {
   this.canvas = canvas;
   this.ctx = canvas.getContext('2d');
-  this.height = 30;
-  this.width = 20;
+  this.height = 50;
+  this.width = 35;
   this.x = (this.canvas.width / 2) - (this.width / 2)
   this.y = this.canvas.height - 60;
   this.lives = 1;
   this.velocity = 3;
   this.direction = 0;
   this.color = 'blue';
-  //this.score = 0;
+  this.img = null;
 }
 
 Player.prototype.checkBorders = function(){
@@ -27,8 +27,10 @@ Player.prototype.move = function() {
 }
 
 Player.prototype.draw = function() {
-  this.ctx.fillStyle = this.color;
-  this.ctx.fillRect( this.x, this.y, this.width, this.height);
+  this.img = new Image();
+  this.img.src = 'images/player/basket.png';
+  this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+  
 }
 
 Player.prototype.setDirection = function(newDirection){

@@ -21,18 +21,23 @@ Game.prototype.startGame = function() {
   
   var loop = () => {
     if (Math.random() > 0.985) {
+
       var randomX = Math.random() * this.canvas.width - 10;
       var newEnemy1 = new Enemy1(this.canvas, randomX);
       this.enemies1.push(newEnemy1);
     }
-    if (Math.random() > 0.99) {
+    if (Math.random() > 0.97) {
+      var imgBonus1Names = ['images/bonus2/fruit.png', 'images/bonus2/meat.png', 'images/bonus2/prawn.png', 'images/bonus2/tomato.png'];
+      var randomBonus1Img = Math.floor(Math.random() * (imgBonus1Names.length) );
       var randomX = Math.random() * this.canvas.width - 10;
-      var newBonus1 = new Bonus1(this.canvas, randomX);
+      var newBonus1 = new Bonus1(this.canvas, randomX, imgBonus1Names, randomBonus1Img);
       this.bonus1.push(newBonus1);
     }
     if (Math.random() > 0.97) {
+      var imgBonus2Names = ['images/bonus1/cheese.png', 'images/bonus1/pizza.png', 'images/bonus1/donut.png', 'images/bonus1/pie.png'];
       var randomX = Math.random() * this.canvas.width - 10;
-      var newBonus2 = new Bonus2(this.canvas, randomX);
+      var randomBonus2Img = Math.floor(Math.random() * (imgBonus2Names.length) );
+      var newBonus2 = new Bonus2(this.canvas, randomX, imgBonus2Names, randomBonus2Img);
       this.bonus2.push(newBonus2);
     }
     this.checkLimits();
