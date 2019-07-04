@@ -6,9 +6,6 @@ function Enemy2(canvas, randomX, ctx, height, width, y, direction) {
   this.velocity = 3;
   this.img = new Image();
   this.src = 'images/enemy1/stain-milk.png';
-  //this.position = randomEnemy2Img;
-  //this.imgNames = imgEnemy2Names;
-  //this.color = 'green';
 }
 
 Enemy2.prototype = Object.create(Enemy1.prototype);

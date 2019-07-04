@@ -25,7 +25,7 @@ Game.prototype.startGame = function() {
   
   var loop = () => {
     if(!this.paused){
-      this.createThings()
+      this.createThings();
     }
     this.checkLimits();
     this.update();
