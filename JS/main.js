@@ -13,10 +13,13 @@ function main() {
 
   function createSplashScreen1 () {
     var splashScreen = buildDom(`
-      <section>
-        <h1>Crazy Shopping!!!</h1>
-        <button class="start">start</button>
-        <button class="skip">skip intro</button>
+      <section id="previous-splash-01"></section>
+      <section id="previous-splash-02"></section>
+      <section id="site-main">
+        <section class="section-buttons">
+          <button class=" button start">start</button>
+          <button class="button skip">skip intro</button>
+        </section>
       </section>
     `);
     var startButton = splashScreen.querySelector('.start');
@@ -28,10 +31,18 @@ function main() {
 
   function createSplashScreen2 () {
     var splashScreen = buildDom(`
-      <section>
-        <h1>Crazy Shopping 2!!!</h1>
-        <button class="start">start</button>
-        <button class="skip">skip intro</button>
+      <section id="previous-splash-21"></section>
+      <section id="previous-splash-22"></section>
+      <section id="splash-2">
+        <section class="title">
+          <h1>Crazy Shopping!!!</h1>
+          <p>You are chilling on your couch doing shit...</p>
+          <p>when you suddenly remember your INLAWS ARE COMMING FOR DINNER!!!!</p>
+        </section>
+        <section class="section-buttons">
+          <button class="button start">continue</button>
+          <button class="button skip">skip intro</button>
+        </section>
       </section>
     `);
     var startButton = splashScreen.querySelector('.start');
@@ -43,10 +54,18 @@ function main() {
 
   function createSplashScreen3 () {
     var splashScreen = buildDom(`
-      <section>
-        <h1>Crazy Shopping 3!!!</h1>
-        <button class="start">start</button>
-        <button class="skip">skip intro</button>
+      <section id="previous-splash-31"></section>
+      <section id="previous-splash-32"></section>
+      <section id="splash-3">
+        <section class="title">
+          <h1>Crazy Shopping!!!</h1>
+          <p>Your fridge sucks</p>
+          <p>You have to go to the supermarket</p>
+        </section>
+        <section class="section-buttons">
+          <button class="button start">continue</button>
+          <button class="button skip">skip intro</button>
+        </section>
       </section>
     `);
     var startButton = splashScreen.querySelector('.start');
@@ -58,9 +77,22 @@ function main() {
 
   function createSplashScreen4 () {
     var splashScreen = buildDom(`
-      <section>
-        <h1>Crazy Shopping 4!!!</h1>
-        <button>start</button>
+      <section id="previous-splash-40"></section>
+      <section id="previous-splash-41"></section>
+      <section id="previous-splash-42"></section>
+      <section id="previous-splash-43"></section>
+      <section id="previous-splash-44"></section>
+      <section id="previous-splash-45"></section> 
+      <section id="splash-4">
+        <section class="title">
+          <h1>Crazy Shopping!!!</h1>
+          <p>It's 20:59!!</p>
+          <p>The supeermarket closes in 1 minute!!</p>
+          <p>You need to get the hell out!!!!</p>
+        </section>
+        <section class="section-buttons">
+          <button class="button start">start</button>
+        </section>
       </section>
     `);
     var startButton = splashScreen.querySelector('button');
