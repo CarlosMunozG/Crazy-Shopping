@@ -82,6 +82,9 @@ p {
 
 canvas{
   background-color: aqua;
+  align-items: center;
+  width: 450px;
+  height:600px;
 }
 
 
@@ -368,12 +371,60 @@ section.testimonials .button {
   100% { opacity:1; }
 }
 
-#splash-2, #splash-3, #splash-4{
+#splash-2, #splash-3, #splash-4, #win-1, #win-2, #gameover {
   z-index:5;
   display:flex;
   justify-content: space-between;
   height:100vh;
   width:100%;
+}
+
+#game{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height:100vh;
+  width:100%;
+  background: url(../images/splash-screens/game.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#game .canvas{
+  position:relative;
+}
+
+#game .data{
+  position: absolute;
+  top:40px;
+  margin-left:10px;
+}
+
+#win-1{
+  background: url(../images/splash-screens/win-game-1.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#win-2{
+  background: url(../images/splash-screens/splash-screen-4-4.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#gameover {
+  background: url(../images/splash-screens/game-over-1.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 section.typewriter{
@@ -421,8 +472,27 @@ section.title p{
   color: #6b100b;
 }
 
-#splash-4 p{
+#splash-4 p, #gameover p{
   color:black;
+}
+
+#win-1 p {
+  text-shadow: 3px 3px 0px rgba(99,40,54,1);
+}
+
+#gameover p{
+  text-shadow: 2px 2px 7px rgba(99,40,54,1);
+}
+
+#win-2 h1{
+  width: 300px;
+  line-height:1;
+}
+
+#game p{
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
 }
 
 section.section-buttons{

@@ -11,7 +11,7 @@ function Game(canvas) {
   this.canvas = canvas;
   this.ctx = this.canvas.getContext("2d");
   this.onGameOver = null;
-  this.time = 30;
+  this.time = 2000;
 }
 
 Game.prototype.startGame = function() {
@@ -131,7 +131,7 @@ Game.prototype.draw = function() {
         this.bonus1.splice(index, 1);
         this.score += bonus.strength;
         this.printData();
-        if(this.score >= 100){
+        if(this.score >= 1000000){
           this.isWin = true;
         }
       }
@@ -146,7 +146,7 @@ Game.prototype.draw = function() {
         this.bonus2.splice(index, 1);
         this.score += bonus.strength;
         this.printData();
-        if(this.score >= 100){
+        if(this.score >= 1000000){
           this.isWin = true;
         }
       }
@@ -164,7 +164,6 @@ Game.prototype.gameWinCallback = function(callback){
 
 Game.prototype.endTime = function() {
   
-  this.time = 30;
   var countdownTimer = setInterval(() => {
     //document.getElementById("progressBar").value = 10 - timeleft;
     console.log(this.time);

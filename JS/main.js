@@ -102,15 +102,19 @@ function main() {
 
   function createGameScreen() {
     var gameScreen = buildDom(`
-      <section>
-        <canvas width="450" height="600"></canvas>
+      <section id="game">
+        <section id="canvas">
+          <canvas width="450" height="600"></canvas>
+          <section class="data">
+            <p id="score-text"></p>
+            <p id="time"></p>
+          </section>
+        </section>
       </section>
-      <section id="score-text"></section>
-      <section id="time"></section>
     `);
     var canvas = document.querySelector('canvas');
     var game = new Game(canvas);
-    game.gameOverCallback(createGameOverScreen1);
+    game.gameOverCallback(createGameOverScreen);
     game.gameWinCallback(createWinScreen1);
     game.startGame();
     document.addEventListener('keydown', function(event){
@@ -136,23 +140,16 @@ function main() {
   };
 
 
-  function createGameOverScreen1() {
+  function createGameOverScreen() {
     var gameOverScreen = buildDom(`
-      <section>
-        <h1>Game Over</h1>
-        <button>restart</button>
-      </section>
-    `);
-    var reStartButton = gameOverScreen.querySelector('button');
-    reStartButton.addEventListener('click', createGameOverScreen2);
-  };  
-
-
-  function createGameOverScreen2() {
-    var gameOverScreen = buildDom(`
-      <section>
-        <h1>Game Over 2</h1>
-        <button>start</button>
+      <section id="gameover">
+        <section class="title">
+          <h1>Game Over Looser</h1>
+          <p>Your inlaws will hate you for the rest of their lives!</p>
+        </section>
+        <section class="section-buttons">
+          <button class="button start">restart</button>
+        </section>
       </section>
     `);
     var reStartButton = gameOverScreen.querySelector('button');
@@ -162,9 +159,14 @@ function main() {
 
   function createWinScreen1() {
     var winScreen = buildDom(`
-      <section>
-        <h1>You win!!!</h1>
-        <button>restart</button>
+      <section id="win-1">
+        <section class="title">
+          <h1>You win!!!</h1>
+          <p>You're the fucking supermarket's master!</p>
+        </section>
+        <section class="section-buttons">
+          <button class="button start">restart</button>
+        </section>
       </section>
     `);
     var reStartButton = winScreen.querySelector('button');
@@ -174,9 +176,14 @@ function main() {
 
   function createWinScreen2() {
     var winScreen = buildDom(`
-      <section>
-        <h1>You win 2!!!</h1>
-        <button>restart</button>
+      <section id="revious-splash-40"></section>
+      <section id="win-2">
+        <section class="title">
+          <h1>You forgot the wine!!!</h1>
+        </section>
+        <section class="section-buttons">
+          <button class="button start">restart</button>
+        </section>
       </section>
     `);
     var reStartButton = winScreen.querySelector('button');
