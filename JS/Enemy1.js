@@ -3,13 +3,15 @@
 function Enemy1(canvas, randomX) {
   this.canvas = canvas;
   this.ctx = canvas.getContext('2d');
-  this.height = 20;
-  this.width = 20;
+  this.height = 50;
+  this.width = 50;
   this.x = randomX;
   this.y = 0;
   this.velocity = 3;
   this.direction = 1;
-  this.color = 'red';
+  //this.color = 'red';
+  this.img = new Image();
+  this.src = 'images/enemy1/stain.png';
 }
 
 Enemy1.prototype.move = function() {
@@ -17,6 +19,6 @@ Enemy1.prototype.move = function() {
 }
 
 Enemy1.prototype.draw = function() {
-  this.ctx.fillStyle = this.color;
-  this.ctx.fillRect( this.x, this.y, this.width, this.height);
+  this.img.src = this.src;
+  this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
 }
