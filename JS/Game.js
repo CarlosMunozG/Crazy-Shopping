@@ -15,12 +15,13 @@ function Game(canvas) {
   this.time = 2000;
   this.paused = false;
   this.gameSong = new Audio('sounds/Benny-hill-theme.mp3');
+  this.catchSound = new Audio('sounds/catch-audio.mp3');
 }
 
 Game.prototype.startGame = function() {
   this.player = new Player(this.canvas);
   this.endTime();
-  this.gameSong.play()
+  this.gameSong.play();
   
   var loop = () => {
     if(!this.paused){
@@ -191,6 +192,7 @@ Game.prototype.draw = function() {
       var topBottom = this.player.y <= bonus.y + bonus.height;
 
       if (rightLeft && leftRight && bottomTop && topBottom) {
+        this.catchSound.play();
         this.bonus1.splice(index, 1);
         this.score += bonus.strength;
         this.printData();
@@ -207,6 +209,7 @@ Game.prototype.draw = function() {
       var topBottom = this.player.y <= bonus.y + bonus.height;
 
       if (rightLeft && leftRight && bottomTop && topBottom) {
+        this.catchSound.play();
         this.bonus2.splice(index, 1);
         this.score += bonus.strength;
         this.printData();
