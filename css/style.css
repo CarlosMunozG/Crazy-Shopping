@@ -81,7 +81,7 @@ p {
 }
 
 canvas{
-  background-color: aqua;
+  /*background-color: aqua;*/
   align-items: center;
   width: 450px;
   height:600px;

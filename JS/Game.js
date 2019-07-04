@@ -2,6 +2,7 @@
 
 function Game(canvas) {
   this.player = null;
+  this.floor = [];
   this.enemies1 = [];
   this.enemies2 = [];
   this.bonus1 = [];
@@ -15,18 +16,22 @@ function Game(canvas) {
   this.time = 2000;
   this.paused = false;
   this.gameSong = new Audio('sounds/Benny-hill-theme.mp3');
-  this.catchSound = new Audio('sounds/catch-audio.mp3');
+  this.catchSound = new Audio('sounds/catch-sound.mp3');
+  this.hitSound = new Audio('sounds/error-sound.mp3')
 }
 
 Game.prototype.startGame = function() {
   this.player = new Player(this.canvas);
-  this.endTime();
-  this.gameSong.play();
   
+  this.endTime();
+  //this.gameSong.play();
+  this.floor = new Floor(this.canvas);
+
   var loop = () => {
     if(!this.paused){
       this.createThings();
     }
+    
     this.checkLimits();
     this.update();
     this.clear();
@@ -57,6 +62,7 @@ Game.prototype.printData = function() {
 Game.prototype.update = function() {
   this.printData();
   this.player.move();
+  this.floor.move();
   this.enemies1.forEach(function(enemy) {
     enemy.move();
   });
@@ -77,6 +83,7 @@ Game.prototype.clear = function() {
 };
 
 Game.prototype.draw = function() {
+  this.floor.draw();
   this.player.draw();
   this.enemies1.forEach(function(enemy) {
     enemy.draw();
@@ -91,7 +98,7 @@ Game.prototype.draw = function() {
     bonus.draw();
   });
 
-  Game.prototype.kick = function() {
+  /*Game.prototype.kick = function() {
     var intervalID = setInterval(() => {
       this.player.setDirectionX(-1); 
     }, 0);
@@ -100,24 +107,8 @@ Game.prototype.draw = function() {
       clearInterval(intervalID);
       this.player.setDirectionX(-1);
     }, 2000);
-  }
+  }*/
 
-  Game.prototype.stop = function() {
-    var intervalID = setInterval(() => {
-      this.enemies1.velocity = 0;
-      this.enemies2.velocity = 0;
-      this.bonus1.velocity = 0;
-      this.bonus2.velocity = 0;
-    }, 0);
-    setTimeout(() => {
-      clearInterval(intervalID);
-      this.enemies1.velocity = 3;
-      this.enemies2.velocity = 3;
-      this.bonus1.velocity = 4;
-      this.bonus2.velocity = 3;
-    }, 2000);
-    
-  }
 
   Game.prototype.checkCollisions = function() {
     this.enemies1.forEach((enemy, index) => {
@@ -125,8 +116,8 @@ Game.prototype.draw = function() {
       var leftRight = this.player.x <= enemy.x + enemy.width;
       var bottomTop = this.player.y + this.player.height >= enemy.y;
       var topBottom = this.player.y <= enemy.y + enemy.height;
-
       if (rightLeft && leftRight && bottomTop && topBottom) {
+        this.hitSound.play();
         this.enemies1.splice(index, 1);
         var intervalID = setInterval(() => {
           this.player.velocity = 0; 
@@ -246,6 +237,8 @@ Game.prototype.endTime = function() {
 }
 
 Game.prototype.createThings = function(){
+ 
+
   if (Math.random() > 0.985) {
     var randomX = Math.random() * this.canvas.width - 50;
     var newEnemy1 = new Enemy1(this.canvas, randomX);
