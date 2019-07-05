@@ -21,4 +21,5 @@ Enemy1.prototype.move = function() {
 Enemy1.prototype.draw = function() {
   this.img.src = this.src;
   this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+
 }

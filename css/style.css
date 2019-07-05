@@ -400,7 +400,53 @@ section.testimonials .button {
 #game .data{
   position: absolute;
   top:40px;
-  margin-left:10px;
+  margin-left:470px;
+  width:120px;
+}
+#game .data p{
+  width:50%;
+  float:left;
+  padding-top:10px;
+}
+#game .data p#score-text{
+  width:65%;
+}
+#game .data p#score-value{
+  width:35%;
+}
+
+#time-value{
+  text-align:center;
+}
+
+.data div:first-child{
+  margin-bottom: 20px;
+}
+
+.scaling{
+  font-size:2rem;
+  color:red;
+  animation-duration: 500ms;
+  animation-name: bouncing;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bouncing {
+  0% { font-size:2rem; padding-top:10px;}
+  50% {font-size:3rem; padding-top:0;}
+  100% { font-size:2rem; padding-top:10px;}
+}
+
+.touching{
+  text-shadow: 0px 0px 0px rgba(255,255,255,0);
+  animation-duration: 500ms;
+  animation-name: touching;
+  animation-iteration-count: 1;
+}
+
+@keyframes touching {
+  0% { text-shadow: 0px 0px 0px rgba(255,255,255,1);}
+  100% { text-shadow: 0px -50px 0px rgba(255,255,255,0);}
 }
 
 #win-1{

@@ -5,6 +5,7 @@ function Game(canvas) {
   this.floor = [];
   this.enemies1 = [];
   this.enemies2 = [];
+  this.enemy3 = null;
   this.bonus1 = [];
   this.bonus2 = [];
   this.score = 0;
@@ -13,7 +14,7 @@ function Game(canvas) {
   this.canvas = canvas;
   this.ctx = this.canvas.getContext("2d");
   this.onGameOver = null;
-  this.time = 2000;
+  this.time = 13;
   this.paused = false;
   this.gameSong = new Audio('sounds/Benny-hill-theme.mp3');
   this.catchSound = new Audio('sounds/catch-sound.mp3');
@@ -22,7 +23,6 @@ function Game(canvas) {
 
 Game.prototype.startGame = function() {
   this.player = new Player(this.canvas);
-  
   this.endTime();
   //this.gameSong.play();
   this.floor = new Floor(this.canvas);
@@ -31,7 +31,6 @@ Game.prototype.startGame = function() {
     if(!this.paused){
       this.createThings();
     }
-    
     this.checkLimits();
     this.update();
     this.clear();
@@ -53,16 +52,19 @@ Game.prototype.checkLimits = function() {
 };
 
 Game.prototype.printData = function() {
-  var scoreText = document.querySelector('#score-text');
-  var timeText = document.querySelector('#time');
-  scoreText.innerHTML = 'Score: ' + this.score;
-  timeText.innerHTML = 'Time: ' + this.time;
+  var scoreValue = document.querySelector('#score-value');
+  var timeValue = document.querySelector('#time-value');
+  scoreValue.innerHTML = this.score;
+  timeValue.innerHTML = this.time;
 }
 
 Game.prototype.update = function() {
   this.printData();
   this.player.move();
   this.floor.move();
+  //var intervalID = setInterval(() => {
+    this.enemy3.move();
+  //}, 5000);
   this.enemies1.forEach(function(enemy) {
     enemy.move();
   });
@@ -85,6 +87,9 @@ Game.prototype.clear = function() {
 Game.prototype.draw = function() {
   this.floor.draw();
   this.player.draw();
+  //var intervalID = setInterval(() => {
+    this.enemy3.draw();
+  //}, 5000);
   this.enemies1.forEach(function(enemy) {
     enemy.draw();
   });
@@ -183,6 +188,9 @@ Game.prototype.draw = function() {
       var topBottom = this.player.y <= bonus.y + bonus.height;
 
       if (rightLeft && leftRight && bottomTop && topBottom) {
+        var timeTextEnding = document.querySelector('#score-value');
+        timeTextEnding.classList.add('touching');
+
         this.catchSound.play();
         this.bonus1.splice(index, 1);
         this.score += bonus.strength;
@@ -200,6 +208,8 @@ Game.prototype.draw = function() {
       var topBottom = this.player.y <= bonus.y + bonus.height;
 
       if (rightLeft && leftRight && bottomTop && topBottom) {
+        var timeTextEnding = document.querySelector('#score-value');
+        timeTextEnding.classList.add('touching');
         this.catchSound.play();
         this.bonus2.splice(index, 1);
         this.score += bonus.strength;
@@ -222,12 +232,15 @@ Game.prototype.gameWinCallback = function(callback){
 
 Game.prototype.endTime = function() {
   var countdownTimer = setInterval(() => {
-    //document.getElementById("progressBar").value = 10 - timeleft;
     if(this.isWin === true){
       this.time = this.time;
       clearInterval(countdownTimer);
     } else {
       this.time -= 1;
+      if(this.time <= 10){
+        var timeTextEnding = document.querySelector('#time-value');
+        timeTextEnding.classList.add('scaling');
+      }
       if(this.time < 0){
         clearInterval(countdownTimer);
         this.isGameOver = true;
@@ -237,28 +250,31 @@ Game.prototype.endTime = function() {
 }
 
 Game.prototype.createThings = function(){
- 
-
   if (Math.random() > 0.985) {
-    var randomX = Math.random() * this.canvas.width - 50;
+    var randomX = Math.random() * (this.canvas.width - 50);
     var newEnemy1 = new Enemy1(this.canvas, randomX);
     this.enemies1.push(newEnemy1);
   }
   if (Math.random() > 0.987) {
-    var randomX = Math.random() * this.canvas.width - 10;
+    var randomX = Math.random() * (this.canvas.width - 50);
     var newEnemy2 = new Enemy2(this.canvas, randomX);
     this.enemies2.push(newEnemy2);
   }
+  //var intervalID = setInterval(() => {
+    var gapWidth = this.canvas.width / 50;
+    var randomX = Math.floor(Math.random() * gapWidth );
+    this.enemy3 = new Enemy3(this.canvas, randomX);
+  //}, 5000);
   if (Math.random() > 0.992) {
     var imgBonus1Names = ['images/bonus2/fruit.png', 'images/bonus2/meat.png', 'images/bonus2/prawn.png', 'images/bonus2/tomato.png'];
     var randomBonus1Img = Math.floor(Math.random() * (imgBonus1Names.length) );
-    var randomX = Math.random() * this.canvas.width - 40;
+    var randomX = Math.random() * (this.canvas.width - 40);
     var newBonus1 = new Bonus1(this.canvas, randomX, imgBonus1Names, randomBonus1Img);
     this.bonus1.push(newBonus1);
   }
   if (Math.random() > 0.997) {
     var imgBonus2Names = ['images/bonus1/cheese.png', 'images/bonus1/pizza.png', 'images/bonus1/donut.png', 'images/bonus1/pie.png'];
-    var randomX = Math.random() * this.canvas.width - 40;
+    var randomX = Math.random() * (this.canvas.width - 40);
     var randomBonus2Img = Math.floor(Math.random() * (imgBonus2Names.length) );
     var newBonus2 = new Bonus2(this.canvas, randomX, imgBonus2Names, randomBonus2Img);
     this.bonus2.push(newBonus2);

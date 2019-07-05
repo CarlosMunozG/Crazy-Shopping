@@ -106,8 +106,14 @@ function main() {
         <section id="canvas">
           <canvas width="450" height="600"></canvas>
           <section class="data">
-            <p id="score-text"></p>
-            <p id="time"></p>
+            <div>
+              <p id="score-text">Score: </p>
+              <p id="score-value"></p>
+            </div>
+            <div>
+              <p id="time">Time: </p>
+              <p id="time-value"></p>
+            </div>
           </section>
         </section>
       </section>
