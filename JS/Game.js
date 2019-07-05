@@ -179,7 +179,7 @@ Game.prototype.draw = function() {
         this.bonus1.splice(index, 1);
         this.score += bonus.strength;
         this.printData();
-        if (this.score >= 100) {
+        if (this.score >= 1000) {
           this.isWin = true;
           this.gameSong.pause();
         }
@@ -199,7 +199,7 @@ Game.prototype.draw = function() {
         this.bonus2.splice(index, 1);
         this.score += bonus.strength;
         this.printData();
-        if (this.score >= 100) {
+        if (this.score >= 1000) {
           this.isWin = true;
           this.gameSong.pause();
         }
