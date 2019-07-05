@@ -521,6 +521,13 @@ section.title p{
 #splash-4 p, #gameover p{
   color:black;
 }
+#splash-2 p, #splash-3 p, #splash-4 p{
+  background-color:rgba(255, 255, 255, 0.75);
+  color: black;
+  font-size: 2.25rem;
+  padding:25px;
+  line-height: 1;
+}
 
 
 #gameover p, #win-1 p{

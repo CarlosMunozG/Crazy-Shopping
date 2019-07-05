@@ -59,7 +59,7 @@ function main() {
       <section id="splash-3">
         <section class="title">
           <h1>Crazy Shopping!!!</h1>
-          <p>Your fridge sucks</p>
+          <p>Your fridge sucks!</p>
           <p>You have to go to the supermarket</p>
         </section>
         <section class="section-buttons">
