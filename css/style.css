@@ -522,12 +522,19 @@ section.title p{
   color:black;
 }
 
-#win-1 p {
-  text-shadow: 3px 3px 0px rgba(99,40,54,1);
+
+#gameover p, #win-1 p{
+  background-color:rgba(255, 255, 255, 0.75);
+  color: black;
+  margin-top: 200px;
+  font-size: 3rem;
+  line-height: 1;
+  text-shadow: 3px 3px 7px rgba(99,40,54,1);
+  padding:0 15px;
 }
 
-#gameover p{
-  text-shadow: 2px 2px 7px rgba(99,40,54,1);
+#win-1 p{
+  margin-top:0;
 }
 
 #win-2 h1{

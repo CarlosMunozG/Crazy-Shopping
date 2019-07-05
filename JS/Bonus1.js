@@ -9,7 +9,7 @@ function Bonus1(canvas, randomX, imgBonus1Names, randomBonus1Img) {
   this.y = 0;
   this.velocity = 4;
   this.direction = 1;
-  this.strength = 20;
+  this.strength = 25;
   this.img = null;
   this.position = randomBonus1Img;
   this.imgNames = imgBonus1Names;

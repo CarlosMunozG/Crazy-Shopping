@@ -127,7 +127,6 @@ function main() {
       if(event.key === 'ArrowLeft'){
         game.player.setDirectionX(-1);
         game.player.setImg('images/player/basket-left.png');
-        console.log(game.player.img.src);
       } else if(event.key === 'ArrowRight'){
         game.player.setDirectionX(1);
         game.player.setImg('images/player/basket-right.png');
